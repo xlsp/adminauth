@@ -15,8 +15,8 @@ configurations {
 }
 
 repositories {
-    maven { url 'http://172.18.74.149:8081/repository/maven-public/' }
     mavenLocal()
+    maven { url 'http://172.18.74.149:8081/repository/maven-public/' }
     maven { url 'https://maven.aliyun.com/repository/public/' }
     mavenCentral()
 }
@@ -41,6 +41,7 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     runtimeOnly 'mysql:mysql-connector-java'
+    implementation 'cn.arcdev:gymcore:0.0.1-SNAPSHOT'
 }
 
 dependencyManagement {

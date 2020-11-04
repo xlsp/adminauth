@@ -2,6 +2,7 @@ package cn.arcdev.gym.adminauth.repository;
 
 import cn.arcdev.gym.adminauth.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
@@ -10,7 +11,8 @@ import java.util.Optional;
  *
  * @author Kraken
  */
-public interface UserRepository extends JpaRepository<Long, User> {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
     /**
      * Find User by {@code username}.
      *
