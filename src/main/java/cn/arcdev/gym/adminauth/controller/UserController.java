@@ -1,10 +1,13 @@
 package cn.arcdev.gym.adminauth.controller;
 
-import cn.arcdev.gym.adminauth.bean.Response;
+import cn.arcdev.core.dto.Response;
+import cn.arcdev.gym.adminauth.dto.request.SignUpRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -21,5 +24,10 @@ public class UserController {
     }
 
     @PostMapping("/sign-up")
-    public Response<>
+    public Response<SignUpRequest> signUp(@RequestBody @Validated SignUpRequest signUpRequest) {
+        Response<SignUpRequest> response = new Response<>();
+        response.setStatus(0);
+        response.setData(signUpRequest);
+        return response;
+    }
 }
