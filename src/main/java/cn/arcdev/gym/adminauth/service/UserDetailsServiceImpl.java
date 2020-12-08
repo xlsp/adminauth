@@ -1,7 +1,7 @@
 package cn.arcdev.gym.adminauth.service;
 
-import cn.arcdev.gym.adminauth.bean.SecurityUser;
-import cn.arcdev.gym.adminauth.domain.User;
+import cn.arcdev.gym.adminauth.bean.security.SecurityUser;
+import cn.arcdev.gym.adminauth.entity.User;
 import cn.arcdev.gym.adminauth.repository.RoleRepository;
 import cn.arcdev.gym.adminauth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found."));
+        User user = userRepository.findUserAndRolesByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Username not found."));
         return new SecurityUser(user);
     }
 }

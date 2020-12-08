@@ -8,9 +8,9 @@ import javax.validation.constraints.Size;
 @Data
 public class SignUpRequest {
     @NotNull
-    @Size(min = 6,max = 32)
+    @Size(min = 6, max = 32)
     private String username;
     @NotNull
-    @Size(min = 6,max = 32)
+    @Size(min = 6, max = 32)
     private String password;
 }

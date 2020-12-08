@@ -10,3 +10,8 @@ spring:
       password: ${NACOS_PASSWORD}
       config:
         file-extension: yaml
+  jpa:
+    show-sql: true
+logging:
+  level:
+    cn.arcdev: trace

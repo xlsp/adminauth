@@ -1,7 +1,7 @@
-package cn.arcdev.gym.adminauth.bean;
+package cn.arcdev.gym.adminauth.bean.security;
 
-import cn.arcdev.gym.adminauth.domain.Role;
-import cn.arcdev.gym.adminauth.domain.User;
+import cn.arcdev.gym.adminauth.entity.Role;
+import cn.arcdev.gym.adminauth.entity.User;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
@@ -44,7 +44,7 @@ public class SecurityUser implements UserDetails {
         this.enabled = user.getEnabled();
         List<Role> roles = user.getRoles();
         for (Role role : roles) {
-            this.authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+            this.authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
     }
 
@@ -65,17 +65,17 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     @Override
